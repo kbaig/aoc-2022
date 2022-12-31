@@ -2,10 +2,9 @@ import * as fs from 'fs';
 import * as path from 'path';
 import { string, array, readonlyArray } from 'fp-ts';
 import { pipe, flow } from 'fp-ts/function';
+import { transpose } from '../util/transpose';
 
 const problemFile = fs.readFileSync(path.join(__dirname, 'problem.txt'), 'utf-8');
-
-const transpose = <T>(array: T[][]): T[][] => array[0].map((_, colIndex) => array.map((row) => row[colIndex]));
 
 const getStacksFromInitialStateLines = (lines: string[]): string[][] => {
   const containersLines = lines.slice(0, lines.length - 1).reverse();
